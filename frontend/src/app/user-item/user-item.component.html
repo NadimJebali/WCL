@@ -1,0 +1,17 @@
+<div (click)="openProfile()" class="ex-item card p-3 mb-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <img src="assets/profilepic.jpg" alt="Profile Picture" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+    
+    <div class="flex-grow-1">
+      <h5 class="mb-1">{{ user.firstname }} {{ user.lastname }}</h5>
+      <p class="text-muted mb-0 text-capitalize">{{ user.role }}</p>
+    </div>
+  </div>
+
+  <!-- Delete button container -->
+  <div (click)="$event.stopPropagation()">
+    <button (click)="deleteUser()" class="btn btn-danger btn-sm">
+      Delete
+    </button>
+  </div>
+</div>

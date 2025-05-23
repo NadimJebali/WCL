@@ -1,0 +1,21 @@
+<div class="container-fluid profile-container">
+  <header class="d-flex justify-content-between align-items-center p-3 bg-white border-bottom">
+    <h2 class="m-0">User Profile</h2>
+    <span class="edit-icon fs-4 text-primary" (click)="updateProfile()">✔️</span>
+  </header>
+
+  <div class="profile-header text-center py-5">
+    <div class="banner mb-3"></div>
+
+    <div *ngIf="currentUser" class="profile-info">
+      <img src="assets/avatar.png" alt="User Avatar" class="profile-pic mb-3" />
+      <input #fullname type="text" placeholder="Full Name" [value]="currentUser.firstname + ' ' + currentUser.lastname" class="form-control input-field" />
+      <input #grade type="text" placeholder="Grade level" value="" class="form-control input-field" />
+    </div>
+  </div>
+
+  <div class="introduction">
+    <h3 class="mb-3">Introduction</h3>
+    <textarea #description placeholder="Write something about yourself..." class="form-control input-textarea"></textarea>
+  </div>
+</div>

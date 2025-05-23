@@ -1,0 +1,86 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white sidebar" style="width: 250px; height: 100vh;">
+  <!-- Profile -->
+  <a routerLink="/profile" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+    <img src="assets/avatar.png" alt="User Avatar" class="rounded-circle me-2" width="50" height="50">
+    <strong *ngIf="currentUser">{{ currentUser.firstname }} {{ currentUser.lastname }}</strong>
+  </a>
+
+  <hr class="text-secondary">
+
+  <!-- Navigation Accordion -->
+  <div class="accordion accordion-flush" id="sidebarAccordion">
+    <div *ngFor="let category of categoryList; let i = index" class="accordion-item bg-dark border-0 text-white">
+      <h2 class="accordion-header" [id]="'flush-heading-' + i">
+        <button 
+          class="accordion-button collapsed bg-dark text-white" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          [attr.data-bs-target]="'#flush-collapse-' + i"
+          aria-expanded="false" 
+          [attr.aria-controls]="'flush-collapse-' + i">
+          {{ category.name }}
+        </button>
+      </h2>
+      <div 
+        [id]="'flush-collapse-' + i" 
+        class="accordion-collapse collapse" 
+        [attr.aria-labelledby]="'flush-heading-' + i" 
+        data-bs-parent="#sidebarAccordion">
+        
+        <div class="accordion-body py-1 px-3">
+          <div class="accordion accordion-flush" [id]="'levelAccordion-' + i">
+            <div *ngFor="let level of getLevelsForCategory(category.id); let j = index" class="accordion-item bg-dark border-0 text-white">
+              <h2 class="accordion-header" [id]="'level-heading-' + i + '-' + j">
+                <button 
+                  class="accordion-button collapsed bg-dark text-white small" 
+                  type="button" 
+                  data-bs-toggle="collapse" 
+                  [attr.data-bs-target]="'#level-collapse-' + i + '-' + j"
+                  aria-expanded="false" 
+                  [attr.aria-controls]="'level-collapse-' + i + '-' + j">
+                  {{ level.name }}
+                </button>
+              </h2>
+              <div 
+                [id]="'level-collapse-' + i + '-' + j" 
+                class="accordion-collapse collapse" 
+                [attr.aria-labelledby]="'level-heading-' + i + '-' + j" 
+                [attr.data-bs-parent]="'#levelAccordion-' + i">
+                <div class="accordion-body ps-3 pt-1 pb-2">
+                  <ul class="list-unstyled">
+                    <li 
+                      *ngFor="let subject of getSubjectForLevel(level.id)" 
+                      (click)="showExList(level.id, subject.id)" 
+                      class="subject-item cursor-pointer">
+                      {{ subject.name }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="text-secondary">
+
+  <!-- Auth Buttons -->
+  <div class="mt-auto w-100">
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/login" class="btn btn-primary mb-2 w-100">Login</a>
+      <a routerLink="/register" class="btn btn-success mb-2 w-100">Register</a>
+    </ng-container>
+    <ng-container *ngIf="currentUser?.role === 'TEACHER'">
+      <a routerLink="/AT-dashboard" class="btn btn-success mb-2 w-100">Teacher Dashboard</a>
+    </ng-container>
+    <ng-container *ngIf="currentUser?.role === 'ADMIN'">
+      <a routerLink="/AT-dashboard" class="btn btn-warning mb-2 w-100">Admin Dashboard</a>
+    </ng-container>
+    <div *ngIf="isLoggedIn">
+      <button (click)="logout()" class="btn btn-danger w-100">Logout</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.form-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  max-width: 100%;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.image-preview, .answer-image-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.image-preview img, .answer-image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.confirm-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background-color: #0056b3;
+}

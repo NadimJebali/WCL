@@ -1,0 +1,160 @@
+<!-- Back Button -->
+<button class="btn btn-link text-decoration-none mb-3" (click)="goBack()" style="font-size: 1.5rem;">
+  ◀️ <span class="ms-1">Back poop</span>
+</button>
+
+<div class="container mt-4 form-container">
+  <form #form="ngForm" novalidate>
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="titleInput" class="form-label">Title</label>
+      <input
+        type="text"
+        id="titleInput"
+        class="form-control"
+        placeholder="Enter title..."
+        [(ngModel)]="formData.title"
+        name="title"
+        required
+        #title="ngModel"
+      />
+      <div *ngIf="title.invalid && title.touched" class="text-danger">
+        Title is required.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label for="descriptionInput" class="form-label">Description</label>
+      <input
+        type="text"
+        id="descriptionInput"
+        class="form-control"
+        placeholder="Enter description..."
+        [(ngModel)]="formData.description"
+        name="description"
+        required
+        #description="ngModel"
+      />
+      <div *ngIf="description.invalid && description.touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="mb-3">
+      <label for="contentTextarea" class="form-label">Content</label>
+      <textarea
+        id="contentTextarea"
+        class="form-control"
+        placeholder="Enter detailed content..."
+        [(ngModel)]="formData.content"
+        name="content"
+        rows="5"
+        required
+        #content="ngModel"
+      ></textarea>
+      <div *ngIf="content.invalid && content.touched" class="text-danger">
+        Content is required.
+      </div>
+    </div>
+
+    <!-- Subject Select -->
+    <div class="mb-3">
+      <label for="subjectSelect" class="form-label">Subject</label>
+      <select
+        id="subjectSelect"
+        class="form-select"
+        [(ngModel)]="formData.subjectDtoId"
+        name="subjectDtoId"
+        required
+        #subjectDtoId="ngModel"
+      >
+        <option value="" disabled>Select a subject</option>
+        <option *ngFor="let subject of subjectList" [value]="subject.id">{{ subject.name }}</option>
+      </select>
+      <div *ngIf="subjectDtoId.invalid && subjectDtoId.touched" class="text-danger">
+        Please select a subject.
+      </div>
+    </div>
+
+    <!-- Level Select -->
+    <div class="mb-3">
+      <label for="levelSelect" class="form-label">Level</label>
+      <select
+        id="levelSelect"
+        class="form-select"
+        [(ngModel)]="formData.levelDtoId"
+        name="levelDtoId"
+        required
+        #levelDtoId="ngModel"
+      >
+        <option value="" disabled>Select a level</option>
+        <option *ngFor="let level of levelList" [value]="level.id">{{ level.name }}</option>
+      </select>
+      <div *ngIf="levelDtoId.invalid && levelDtoId.touched" class="text-danger">
+        Please select a level.
+      </div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="mb-3">
+      <label for="imageInput" class="form-label">Upload Exercise Image</label>
+      <input
+        type="file"
+        id="imageInput"
+        class="form-control"
+        accept="image/*"
+        (change)="onImageChange($event)"
+      />
+    </div>
+
+    <!-- Image Preview -->
+    <div class="mb-4" *ngIf="imagePreview">
+      <img [src]="imagePreview" class="img-fluid rounded" alt="Exercise Image Preview" />
+    </div>
+
+    <!-- Answer Section -->
+    <h5 class="mb-3">Answer (Optional)</h5>
+    <div class="mb-3">
+      <label for="answerTextarea" class="form-label">Answer Content</label>
+      <textarea
+        id="answerTextarea"
+        class="form-control"
+        placeholder="Write your answer..."
+        [(ngModel)]="formData.answer"
+        name="answer"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- Answer Image Upload -->
+    <div class="mb-3">
+      <label for="answerImageInput" class="form-label">Upload Answer Image</label>
+      <input
+        type="file"
+        id="answerImageInput"
+        class="form-control"
+        accept="image/*"
+        (change)="onAnswerImageChange($event)"
+      />
+    </div>
+
+    <!-- Answer Image Preview -->
+    <div class="mb-4" *ngIf="answerImagePreview">
+      <img [src]="answerImagePreview" class="img-fluid rounded" alt="Answer Image Preview" />
+    </div>
+
+    <!-- Submit Buttons -->
+    <div class="d-flex gap-3 mt-4">
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="submitSolution()"
+        [disabled]="!formData.title || !formData.answer"
+      >
+        💡 Submit
+      </button>
+    </div>
+  </form>
+</div>

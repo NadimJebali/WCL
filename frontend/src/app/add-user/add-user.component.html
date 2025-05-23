@@ -1,0 +1,51 @@
+<!-- Back Button -->
+<button class="btn btn-link text-decoration-none mb-3" (click)="goBack()" style="font-size: 1.5rem;">
+    ◀️ <span class="ms-1">Back poop poop poop</span>
+  </button>
+  
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    
+    <h4 class="mb-4 text-primary">Add a New User</h4>
+  
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+  
+      <!-- First Name -->
+      <div class="mb-3">
+        <label for="firstname" class="form-label">First Name</label>
+        <input id="firstname" type="text" class="form-control" placeholder="e.g. Gorblak" formControlName="firstname">
+      </div>
+  
+      <!-- Last Name -->
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Last Name</label>
+        <input id="lastname" type="text" class="form-control" placeholder="e.g. Da Choppa" formControlName="lastname">
+      </div>
+  
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" type="email" class="form-control" placeholder="e.g. gorblak@waaagh.krump" formControlName="email">
+      </div>
+  
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" type="password" class="form-control" placeholder="Enter a strong password" formControlName="password">
+      </div>
+  
+      <!-- Role -->
+      <div class="mb-4">
+        <label for="role" class="form-label">Role</label>
+        <select id="role" class="form-select" formControlName="role">
+          <option value="" disabled selected>Select role</option>
+          <option value="STUDENT">Student</option>
+          <option value="EMPLOYEE">Employee</option>
+          <option value="ADMIN">Admin</option>
+        </select>
+      </div>
+  
+      <!-- Submit -->
+      <button type="submit" class="btn btn-success w-100" [disabled]="userForm.invalid">Add User</button>
+    </form>
+  </div>
+  

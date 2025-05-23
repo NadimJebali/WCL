@@ -1,0 +1,55 @@
+<div class="container mt-4 dashboard-container">
+    <h1 class="dashboard-title">
+      {{ currentUser?.role === 'ADMIN' ? 'Admin Dashboard' : 'Teacher Dashboard' }}
+    </h1>
+  
+    <div class="user-info mb-4">
+      <h2>Welcome, {{ currentUser?.firstname }} {{ currentUser?.lastname }}</h2>
+      <span class="badge bg-primary role-badge">{{ currentUser?.role }}</span>
+    </div>
+  
+    <div class="dashboard-content">
+      <!-- Quick Stats -->
+      <div class="row stats-container">
+        <div class="col-md-4">
+          <div class="stat-box p-3 rounded">
+            <h3>Exercises</h3>
+            <p>📚 120</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-box p-3 rounded">
+            <h3>Students</h3>
+            <p>👩‍🎓 450</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-box p-3 rounded">
+            <h3>Reports</h3>
+            <p>📑 5 Pending</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Admin Panel -->
+      <div *ngIf="currentUser?.role === 'ADMIN'" class="admin-section mt-4 p-3 rounded">
+        <h2>Admin Panel</h2>
+        <ul class="list-unstyled">
+          <li routerLink="/users-list" class="list-item py-2">👥 Manage Users</li>
+          <li routerLink="/teacher-ex-list" class="list-item py-2">📚 Manage Exercises</li>
+          <li class="list-item py-2">📊 View Reports</li>
+          <li class="list-item py-2">⚙ System Settings</li>
+        </ul>
+      </div>
+  
+      <!-- Teacher Panel -->
+      <div *ngIf="currentUser?.role === 'TEACHER'" class="teacher-section mt-4 p-3 rounded">
+        <h2>Teacher Panel</h2>
+        <ul class="list-unstyled">
+          <li routerLink="/teacher-ex-list" class="list-item py-2">✍ Manage Exercises</li>
+          <li class="list-item py-2">📑 Create Report Ticket</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

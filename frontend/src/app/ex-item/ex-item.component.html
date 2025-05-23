@@ -1,0 +1,20 @@
+<div (click)="openEx()" class="ex-item card p-3 mb-3 shadow-sm">
+  <div class="d-flex justify-content-between align-items-start">
+    <div>
+      <h5 class="ex-title mb-1">{{ ex.title }}</h5>
+      <p class="ex-description text-muted mb-2">{{ ex.description }}</p>
+    </div>
+
+    <div *ngIf="currentUser?.role === 'ADMIN' || currentUser?.role === 'TEACHER'" class="text-end ms-3">
+      <small class="text-muted d-block mb-2">#{{ ex.id }}</small>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+        <button class="btn btn-outline-primary" (click)="editEx(); $event.stopPropagation()">
+          <i class="bi bi-pencil-square me-1"></i>Update
+        </button>
+        <button class="btn btn-outline-danger" (click)="deleteEx(ex.id); $event.stopPropagation()">
+          <i class="bi bi-trash me-1"></i>Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

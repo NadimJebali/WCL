@@ -1,0 +1,141 @@
+/* Remove default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure body and html span full height */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Full screen register container */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  background: linear-gradient(to right, #a8edea, #fed6e3); /* Gradient background */
+  position: absolute; /* Ensures it covers the whole screen */
+}
+
+/* The register box styling */
+.register-box {
+  width: 100%;
+  max-width: 500px; /* Max width for the register box */
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title and other elements styling */
+h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  color: gray;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background: #218838;
+}
+
+.login-link {
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.role-group {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%; /* Ensure it takes up full width */
+}
+
+/* Adjust label for role group */
+.role-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px; /* Increase font size for readability */
+}
+
+/* Radio Button Styling */
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between radio buttons */
+  margin-top: 10px;
+}
+
+/* Style for each radio button container */
+.radio-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust space between radio button and label */
+}
+
+/* Styling for radio input elements */
+.radio-group input {
+  transform: scale(1.2); /* Slightly larger size for better visibility */
+  margin: 0; /* Remove extra margin */
+}
+
+/* Styling for radio labels */
+.radio-group label {
+  font-weight: normal;
+  cursor: pointer;
+  margin: 0; /* Remove default margin */
+  display: inline-block; /* Ensure label is properly aligned */
+}
+
+/* Vertical stacking of radio buttons if necessary */
+.radio-group .radio-container {
+  display: flex;
+  flex-direction: row; /* Align radio buttons horizontally */
+  align-items: center; /* Vertically center radio button with label */
+}

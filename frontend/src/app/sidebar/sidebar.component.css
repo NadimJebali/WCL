@@ -1,0 +1,19 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.subject-item {
+  cursor: pointer;
+  padding: 5px 0;
+  transition: background 0.2s ease-in-out;
+}
+
+.subject-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 5px;
+  border-left: 3px solid #00bcd4;
+}

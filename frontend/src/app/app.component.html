@@ -1,0 +1,14 @@
+<!-- Only show sidebar if logged in -->
+<div *ngIf="isLoggedIn; else loginView" class="app-container">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Show full-screen content when not logged in -->
+<ng-template #loginView>
+  <div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>

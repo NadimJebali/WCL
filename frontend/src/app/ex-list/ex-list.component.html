@@ -1,0 +1,23 @@
+
+<!-- Single search input -->
+<div class="mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search by Name, ID or Subject"
+    [(ngModel)]="filters.searchTerm"
+    (input)="applyFilters()"
+  />
+</div>
+
+<div *ngIf="filteredExList.length > 0; else noItems">
+  <div *ngFor="let ex of filteredExList; let i = index">
+    <app-ex-item [ex]="ex"></app-ex-item>
+  </div>
+</div>
+
+<ng-template #noItems>
+  <div>
+    <p>No items available</p>
+  </div>
+</ng-template>

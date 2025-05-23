@@ -1,0 +1,40 @@
+.splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeOut 3s ease-in-out forwards; /* Animation lasts 3 seconds */
+}
+
+.splash-text {
+  font-size: 100px;
+  font-weight: bold;
+  color: white;
+  animation: textFade 4s ease-in-out forwards;
+}
+
+/* Keyframes for fading out */
+@keyframes textFade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
